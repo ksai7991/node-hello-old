@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
 
   // Options for the HTTP request
   const options = {
-    hostname: 'internal-service',
+    hostname: 'internal-app',
     port: 8080,
     path: '/',
     method: 'GET'
