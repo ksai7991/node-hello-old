@@ -1,6 +1,3 @@
-It seems you want to log more information from your Node.js server. You can achieve this by adding more `console.log` statements at various points in your code to track the flow and debug any issues. Here's an expanded version of your code with additional logging:
-
-```javascript
 const http = require('http');
 const port = process.env.PORT || 3000;
 
@@ -51,6 +48,3 @@ const server = http.createServer((req, res) => {
 server.listen(port, () => {
   console.log(`Server running on http://localhost:${port}/`);
 });
-```
-
-With these additional log statements, you can track the flow of your server more closely and identify any issues that may arise. Adjust the log statements as needed to suit your debugging needs.
