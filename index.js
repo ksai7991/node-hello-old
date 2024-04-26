@@ -44,7 +44,7 @@ const server = http.createServer((req, res) => {
 
     // End the internal HTTP request
     reqInternal.end();
-  }, 10000); // 10 seconds delay
+  }, 50000); // 10 seconds delay
 });
 
 server.listen(port, () => {
