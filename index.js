@@ -47,6 +47,11 @@ const server = http.createServer((req, res) => {
   }, 1); // 10 seconds delay
 });
 
-server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}/`);
+const delayInMilliseconds = 30 * 60 * 1000; // 30 minutes in milliseconds
+
+setTimeout(() => {
+  server.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}/`);
+  });
+}, delayInMilliseconds);
 });
