@@ -1,6 +1,5 @@
 const http = require('http');
 const port = process.env.PORT || 3000;
-const delayInMilliseconds = 30 * 60 * 1000; // 30 minutes in milliseconds
 let count = 0;
 
 const server = http.createServer((req, res) => {
@@ -48,11 +47,6 @@ const server = http.createServer((req, res) => {
   }, 1); // 10 seconds delay
 });
 
-
-
-setTimeout(() => {
-  server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
-  });
-}, delayInMilliseconds);
+server.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}/`);
 });
