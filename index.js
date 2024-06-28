@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, () => {
-  const delayInMilliseconds = 30 * 60 * 1000; // 30 minutes in milliseconds
+  const delayInMilliseconds = 30; // 30 minutes in milliseconds
   
   setTimeout(() => {
     console.log(`Server running on http://localhost:${port}/`);
