@@ -22,7 +22,7 @@ services:
     repo: ksai7991/node-hello
   http_port: 8080
   instance_count: 1
-  instance_size_slug: basic-xxs
+  instance_size_slug: apps-d-4vcpu-16gb
   log_destinations:
   - logtail:
       token: qTMoi6Rk9MXbjtLRTPvnvhPC
