@@ -21,6 +21,12 @@ services:
     deploy_on_push: true
     repo: ksai7991/node-hello
   http_port: 8080
+  autoscaling:
+    max_instance_count: 3
+    metrics:
+      cpu:
+        percent: 70
+    min_instance_count: 1
   instance_count: 1
   instance_size_slug: apps-d-4vcpu-16gb
   log_destinations:
