@@ -16,13 +16,27 @@ const server = http.createServer((req, res) => {
   const requestStartTime = new Date(); // Capture the start time of the request
   console.log('Request received at:', getCurrentTime());
   console.log('Request Headers:', req.headers);
-  
+
   // Set a timeout to respond after 120 seconds (120,000 milliseconds)
   const responseTimeout = setTimeout(() => {
     try {
       res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('Hello World\n');
+      res.setHeader('Content-Type', 'text/html'); // Set Content-Type to HTML
+      // Send an HTML response that includes the email address
+      res.end(`
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Welcome</title>
+          </head>
+          <body>
+            <h1>Hello World</h1>
+            <p>Contact: <a href="mailto:ksai@krishna.com">ksai@krishna.com</a></p>
+          </body>
+        </html>
+      `);
       console.log('Response sent at:', getCurrentTime());
     } catch (error) {
       console.error('Error responding:', error.message);
