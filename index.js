@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
     } catch (error) {
       console.error('Error responding:', error.message);
     }
-  }, 120000); // 120 seconds
+  }, 10); // 120 seconds
 
   // Handle aborted connections
   req.on('aborted', () => {
