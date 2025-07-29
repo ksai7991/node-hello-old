@@ -1,8 +1,20 @@
-alerts:
-- rule: DEPLOYMENT_FAILED
-- rule: DOMAIN_FAILED
 features:
 - buildpack-stack=ubuntu-22
+envs:
+- key: VITE_SUPABASE_URL
+  scope: RUN_AND_BUILD_TIME
+  type: SECRET
+  value: EV[1:RfxVts7ARTJSYrCezD/GvbURyRHCnslD:yx27qaGTOSIrHb7/RFgVhQ/RDTSX3dh6muTKCdXzsEi36vjzpr8j4vl1pSKf49x2RNtz/2VQ21o=]
+- key: VITE_SUPABASE_URL_ANOTHER
+  scope: RUN_AND_BUILD_TIME
+  type: SECRET
+  value: EV[1:RfxVts7ARTJSYrCezD/GvbURyRHCnslD:yx27qaGTOSIrHb7/RFgVhQ/RDTSX3dh6muTKCdXzsEi36vjzpr8j4vl1pSKf49x2RNtz/2VQ21o=]
+functions:
+- git:
+    branch: master
+    repo_clone_url: https://github.com/digitalocean/sample-functions-nodejs-helloworld.git
+  name: sample-functions-nodejs-hellowor
+  source_dir: /
 ingress:
   rules:
   - component:
@@ -10,7 +22,12 @@ ingress:
     match:
       path:
         prefix: /
-name: internal-service-app
+  - component:
+      name: sample-functions-nodejs-hellowor
+    match:
+      path:
+        prefix: /sample-functions-nodejs-hellowor
+name: internal-service-app1
 region: blr
 services:
 - environment_slug: node-js
@@ -19,14 +36,8 @@ services:
     deploy_on_push: true
     repo: ksai7991/node-hello
   http_port: 8080
-  autoscaling:
-    max_instance_count: 3
-    metrics:
-      cpu:
-        percent: 70
-    min_instance_count: 1
-  instance_count: 1
-  instance_size_slug: apps-d-4vcpu-16gb
+  instance_count: 3
+  instance_size_slug: apps-s-2vcpu-4gb
   log_destinations:
   - logtail:
       token: qTMoi6Rk9MXbjtLRTPvnvhPC
